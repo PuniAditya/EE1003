@@ -1,4 +1,4 @@
-\frametitle{Complete Python Implementation}
+\frametitle{Python Implementation}
 \begin{lstlisting}[language=Python]
 import numpy as np
 from scipy import signal

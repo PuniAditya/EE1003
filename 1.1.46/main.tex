@@ -49,7 +49,7 @@
 \end{frame}
 
 \begin{frame}{The Question}
-Consider the AC bridge shown below. $A, R, L,$ and $C$ are positive finite values. The input is $v_{in}(t) = A\sin(\omega t)$. Find the condition for $V_0 = 0$.
+Consider the AC bridge shown below. $A, R, L,$ and $C$ have positive finite values. Then, $V_0 = 0$.
 \begin{figure}
     \centering
     \includegraphics[width=0.3\columnwidth]{figs/circuit.jpg}
@@ -57,19 +57,22 @@ Consider the AC bridge shown below. $A, R, L,$ and $C$ are positive finite value
 	\label{fig:ckt}
 \end{figure}
 \begin{enumerate}
-    \item $\omega L = \frac{1}{\omega C}$
-    \item $L = C$
-    \item $R = \frac{1}{\omega\sqrt{LC}}$
-    \item \textbf{$V_0$ cannot be made zero}
+    \item $V_0 = 0$ if $\omega L = \frac{1}{\omega C}$
+    \item $V_0 = 0$ if $L = C$
+    \item $V_0 = 0$ if $R = \frac{1}{\omega\sqrt{LC}}$
+    \item $V_0$ cannot be made zero
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{Theoretical Solution: Laplace Domain}
+\begin{frame}{Theoretical Solution}
 The transfer function is defined as $H(s) = \frac{V_0(s)}{V_{in}(s)}$. Applying the voltage divider rule:
 \begin{align}
     V_1(s) &= V_{in}(s) \brak{\frac{R}{R + \brak{R + sL}}} = V_{in}(s) \brak{\frac{R}{2R + sL}} \\
     V_2(s) &= V_{in}(s) \brak{\frac{R}{R + \brak{R + \frac{1}{sC}}}} = V_{in}(s) \brak{\frac{sRC}{2sRC + 1}}
 \end{align}
+\end{frame}
+
+\begin{frame}{Theoretical Solution}
 The output voltage is $V_0(s) = V_1(s) - V_2(s)$. Thus:
 \begin{align}
     H(s) &= \frac{R}{2R + sL} - \frac{sRC}{2sRC + 1} \\
@@ -92,10 +95,10 @@ Since $\omega, L, C > 0$, the product $\omega^2LC$ is always positive.
 
 \vfill
 \textbf{Conclusion:} 
-\textbf{4} No real frequency $\omega$ can satisfy $\omega^2LC = -1$. Therefore, $V_0$ cannot be zero.
+\textbf{(4)} No real frequency $\omega$ can satisfy $\omega^2LC = -1$. Therefore, $V_0$ cannot be zero.
 \end{frame}
 
-\begin{frame}[fragile]{Complete Python Implementation}
+\begin{frame}[fragile]{Python Implementation}
 \begin{lstlisting}[language=Python]
 import numpy as np
 from scipy import signal
@@ -136,7 +139,7 @@ plt.show()
     \caption{Time-Domain Response of $V_{in}$ and $V_0$}
 	\label{fig:sim}
 \end{figure}
-The simulation confirms that $V_0(t)$ is a persistent sinusoid, meaning the bridge never reaches a zero-amplitude steady state.
+The simulation confirms that $V_0(t)$ is a persistent sinusoid, meaning it never reaches a zero-amplitude steady state.
 \end{frame}
 
 \end{document}
