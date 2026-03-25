@@ -1,0 +1,30 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.special import factorial
+
+x = np.linspace(0, 1, 500)
+n = 3
+
+ex = np.exp(x)
+sn = sum((x**k) / factorial(k) for k in range(n))
+error = np.abs(ex - sn)
+
+delta_assumed = np.exp(1) / factorial(n)
+delta_measured = np.max(error)
+
+plt.figure(figsize=(8, 6))
+plt.plot(x, ex, label=r'$e^x$')
+plt.plot(x, sn, label=r'$S_n(x)$')
+plt.plot(x, error, label=r'$\epsilon = \vert e^x - S_n(x)\vert$', color='red')
+
+plt.axhline(delta_assumed, color='purple', linestyle='--', label=r'Assumed $\delta = \frac{e}{n!}$')
+plt.axhline(delta_measured, color='orange', linestyle=':', label=r'Measured $\delta = \max(\epsilon)$')
+plt.axhline(0, color='black', linewidth=2)
+plt.axvline(0, color='black', linewidth=2)
+plt.xlabel(r'$x$')
+plt.ylabel(r'$y$')
+plt.grid(True, linestyle=':', alpha=0.7)
+plt.legend()
+plt.tight_layout()
+plt.savefig('../figs/plot.jpg')
+plt.show()
