@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  25 MAR 2026 15:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  25 MAR 2026 15:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1134,10 +1134,7 @@ thkerncmss.
 File: figs/circuit.jpg Graphic file (type jpg)
 <use figs/circuit.jpg>
 Package pdftex.def Info: figs/circuit.jpg  used on input line 65.
-(pdftex.def)             Requested size: 273.83728pt x 157.81364pt.
-
-Overfull \vbox (54.97694pt too high) detected at line 65
- []
+(pdftex.def)             Requested size: 102.68962pt x 59.17528pt.
 
 [2
 
@@ -1155,12 +1152,8 @@ Overfull \vbox (54.97694pt too high) detected at line 65
 File: figs/plot.jpg Graphic file (type jpg)
 <use figs/plot.jpg>
 Package pdftex.def Info: figs/plot.jpg  used on input line 140.
-(pdftex.def)             Requested size: 273.83728pt x 205.38673pt.
-
-Overfull \vbox (43.18977pt too high) detected at line 140
- []
-
-[6
+(pdftex.def)             Requested size: 171.14764pt x 128.36009pt.
+ [6
 
  <./figs/plot.jpg>]
 \tf@nav=\write6
@@ -1172,7 +1165,8 @@ Overfull \vbox (43.18977pt too high) detected at line 140
 \tf@snm=\write8
 \openout8 = `main.snm'.
 
- (./main.aux)
+
+(./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1199,7 +1193,7 @@ ssi10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb
 ><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texl
 ive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2026/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on main.pdf (6 pages, 215070 bytes).
+Output written on main.pdf (6 pages, 215229 bytes).
 PDF statistics:
  265 PDF objects out of 1000 (max. 8388607)
  207 compressed objects within 3 object streams

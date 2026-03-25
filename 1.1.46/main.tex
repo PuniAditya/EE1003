@@ -52,7 +52,7 @@
 Consider the AC bridge shown below. $A, R, L,$ and $C$ are positive finite values. The input is $v_{in}(t) = A\sin(\omega t)$. Find the condition for $V_0 = 0$.
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{figs/circuit.jpg}
+    \includegraphics[width=0.3\columnwidth]{figs/circuit.jpg}
     \caption{Circuit Diagram}
 	\label{fig:ckt}
 \end{figure}
@@ -92,7 +92,7 @@ Since $\omega, L, C > 0$, the product $\omega^2LC$ is always positive.
 
 \vfill
 \textbf{Conclusion:} 
-\\ No real frequency $\omega$ can satisfy $\omega^2LC = -1$. Therefore, $V_0$ cannot be zero.
+\textbf{4} No real frequency $\omega$ can satisfy $\omega^2LC = -1$. Therefore, $V_0$ cannot be zero.
 \end{frame}
 
 \begin{frame}[fragile]{Complete Python Implementation}
@@ -132,7 +132,7 @@ plt.show()
 \begin{frame}{Simulation Results}
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{figs/plot.jpg}
+    \includegraphics[width=0.5\columnwidth]{figs/plot.jpg}
     \caption{Time-Domain Response of $V_{in}$ and $V_0$}
 	\label{fig:sim}
 \end{figure}
