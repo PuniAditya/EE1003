@@ -1,0 +1,21 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-4, 4, 1000)
+
+N = 0.6
+M = 1 - (2/3) * N
+
+px = M * np.exp(-2 * np.abs(x)) + N * np.exp(-3 * np.abs(x))
+
+plt.plot(x, px, label=rf'$P_X(x)$', color='blue')
+plt.fill_between(x, px, color='blue', alpha=0.2)
+plt.axhline(0, color='black', linewidth=2)
+plt.axvline(0, color='black', linewidth=2)
+plt.title('Probability Density Function')
+plt.xlabel(r'$x$')
+plt.ylabel(r'$P_X(x)$')
+plt.grid(True, linestyle=':', alpha=0.7)
+plt.legend()
+plt.savefig('../figs/plot.jpg')
+plt.show()

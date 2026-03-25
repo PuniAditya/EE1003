@@ -1,0 +1,125 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{beaver}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{gvv}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[american]{circuitikz} 
+
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{\left[#1\right]}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{pythonStyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\tiny,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    language=Python
+}
+\lstset{style=pythonStyle}
+
+\title{3.0.46}
+\author{Puni Aditya - EE25BTECH11046}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Question}
+$P_X(x) = M\exp(-2|x|) + N\exp(-3|x|)$ is the probability density function for the real random variable $X$, over the entire $x$ axis. $M$ and $N$ are both positive real numbers. The equation relating $M$ and $N$ is
+\begin{enumerate}
+    \item $M + \frac{2}{3} N = 1$
+    \item $2M + \frac{1}{3}N = 1$
+    \item $M + N = 1$
+    \item $M + N = 3$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Total Probability Condition}
+For any valid Probability Density Function (PDF) $P_X(x)$, the total area under the curve over the entire real axis must equal exactly $1$:
+\begin{align}
+    \int_{-\infty}^{\infty} P_X(x) \, dx &= 1
+\end{align}
+
+Substituting the given PDF:
+\begin{align}
+    \int_{-\infty}^{\infty} \brak{M\exp\brak{-2\abs{x}} + N\exp\brak{-3\abs{x}}} \, dx &= 1
+\end{align}
+\end{frame}
+
+\begin{frame}{Theoretical Solution}
+Since $\exp\brak{-a\abs{x}}$ is an even function, we evaluate over $[0, \infty)$:
+\begin{align}
+    \int_{-\infty}^{\infty} \exp\brak{-a\abs{x}} \, dx &= 2 \int_{0}^{\infty} \exp\brak{-ax} \, dx \\
+    &= 2 \sbrak{\frac{\exp\brak{-ax}}{-a}}_0^\infty \\
+    &= 2 \brak{0 - \frac{1}{-a}} = \frac{2}{a}
+\end{align}
+
+Applying this result for $a=2$ and $a=3$:
+\begin{align}
+    M\brak{\frac{2}{2}} + N\brak{\frac{2}{3}} &= 1 \\
+    M + \frac{2}{3}N &= 1
+\end{align}
+
+\textbf{Conclusion:} Option (1) is correct.
+\end{frame}
+
+\begin{frame}[fragile]{Python Implementation}
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-4, 4, 1000)
+
+N = 0.6
+M = 1 - (2/3) * N
+
+px = M * np.exp(-2 * np.abs(x)) + N * np.exp(-3 * np.abs(x))
+
+plt.plot(x, px, label=rf'$P_X(x)$', color='blue')
+plt.fill_between(x, px, color='blue', alpha=0.2)
+plt.axhline(0, color='black', linewidth=2)
+plt.axvline(0, color='black', linewidth=2)
+plt.title('Probability Density Function')
+plt.xlabel(r'$x$')
+plt.ylabel(r'$P_X(x)$')
+plt.grid(True, linestyle=':', alpha=0.7)
+plt.legend()
+plt.savefig('../figs/plot.jpg')
+plt.show()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Probability Density Function Plot}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\columnwidth]{figs/plot.jpg}
+    \caption{Plot of the PDF with total shaded area equal to 1}
+\end{figure}
+\end{frame}
+
+\end{document}

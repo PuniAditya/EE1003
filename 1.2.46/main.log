@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  25 MAR 2026 16:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  25 MAR 2026 17:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1174,12 +1174,8 @@ thkerncmss.
 File: figs/plot.jpg Graphic file (type jpg)
 <use figs/plot.jpg>
 Package pdftex.def Info: figs/plot.jpg  used on input line 157.
-(pdftex.def)             Requested size: 273.83728pt x 205.37614pt.
-
-Overfull \vbox (14.40556pt too high) detected at line 157
- []
-
-[7
+(pdftex.def)             Requested size: 205.37926pt x 154.0321pt.
+ [7
 
  <./figs/plot.jpg>]
 \tf@nav=\write6
@@ -1219,7 +1215,7 @@ ssi10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb
 ive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2026/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2026/texmf-dist/
 fonts/type1/public/cm-super/sftt0800.pfb>
-Output written on main.pdf (7 pages, 183795 bytes).
+Output written on main.pdf (7 pages, 183715 bytes).
 PDF statistics:
  297 PDF objects out of 1000 (max. 8388607)
  236 compressed objects within 3 object streams
