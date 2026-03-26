@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  25 MAR 2026 17:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  26 MAR 2026 14:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1191,14 +1191,66 @@ Package pdftex.def Info: figs/pdf_plot.jpg  used on input line 154.
  [7
 
  <./figs/pdf_plot.jpg>]
-<figs/cdf_plot.jpg, id=237, 578.16pt x 433.62pt>
+<figs/cdf_plot.jpg, id=238, 578.16pt x 433.62pt>
 File: figs/cdf_plot.jpg Graphic file (type jpg)
 <use figs/cdf_plot.jpg>
 Package pdftex.def Info: figs/cdf_plot.jpg  used on input line 162.
 (pdftex.def)             Requested size: 205.37926pt x 154.0321pt.
  [8
 
- <./figs/cdf_plot.jpg>]
+ <./figs/cdf_plot.jpg>] [9
+
+] [10
+
+] [11
+
+]
+\openout4 = `main.vrb'.
+
+ (./main.vrb) [12
+
+]
+\openout4 = `main.vrb'.
+
+ (./main.vrb) [13
+
+]
+<figs/conditional_gaussian_1000.png, id=411, 578.16pt x 433.62pt>
+File: figs/conditional_gaussian_1000.png Graphic file (type png)
+<use figs/conditional_gaussian_1000.png>
+Package pdftex.def Info: figs/conditional_gaussian_1000.png  used on input line
+ 252.
+(pdftex.def)             Requested size: 205.37926pt x 154.0321pt.
+ [14
+
+ <./figs/conditional_gaussian_1000.png>]
+<figs/conditional_gaussian_5000.png, id=442, 578.16pt x 433.62pt>
+File: figs/conditional_gaussian_5000.png Graphic file (type png)
+<use figs/conditional_gaussian_5000.png>
+Package pdftex.def Info: figs/conditional_gaussian_5000.png  used on input line
+ 261.
+(pdftex.def)             Requested size: 205.37926pt x 154.0321pt.
+ [15
+
+ <./figs/conditional_gaussian_5000.png>]
+<figs/conditional_gaussian_10000.png, id=472, 578.16pt x 433.62pt>
+File: figs/conditional_gaussian_10000.png Graphic file (type png)
+<use figs/conditional_gaussian_10000.png>
+Package pdftex.def Info: figs/conditional_gaussian_10000.png  used on input lin
+e 270.
+(pdftex.def)             Requested size: 205.37926pt x 154.0321pt.
+ [16
+
+ <./figs/conditional_gaussian_10000.png>]
+<figs/conditional_gaussian_20000.png, id=502, 578.16pt x 433.62pt>
+File: figs/conditional_gaussian_20000.png Graphic file (type png)
+<use figs/conditional_gaussian_20000.png>
+Package pdftex.def Info: figs/conditional_gaussian_20000.png  used on input lin
+e 280.
+(pdftex.def)             Requested size: 205.37926pt x 154.0321pt.
+ [17
+
+ <./figs/conditional_gaussian_20000.png>]
 \tf@nav=\write6
 \openout6 = `main.nav'.
 
@@ -1208,7 +1260,7 @@ Package pdftex.def Info: figs/cdf_plot.jpg  used on input line 162.
 \tf@snm=\write8
 \openout8 = `main.snm'.
 
- (./main.aux)
+(./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1217,28 +1269,29 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 45745 strings out of 467525
- 1086611 string characters out of 5423209
+ 45911 strings out of 467525
+ 1090173 string characters out of 5423209
  2229807 words of memory out of 5000000
- 74044 multiletter control sequences out of 15000+600000
- 635703 words of font info for 69 fonts, out of 8000000 for 9000
+ 74180 multiletter control sequences out of 15000+600000
+ 640250 words of font info for 85 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 128i,15n,123p,396b,1380s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,18n,123p,396b,1380s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/tex
 live/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2026
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2026/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/texlive/2026/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2026/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmssbx10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmssi10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmssi8.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
-b><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texl
-ive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2026/t
-exmf-dist/fonts/type1/public/cm-super/sftt0800.pfb>
-Output written on main.pdf (8 pages, 211094 bytes).
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2026/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2026/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmss12.pfb><c:/texlive/2026/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmss8.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmssbx10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ssi10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb
+><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texl
+ive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2026/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2026/texmf-dist/
+fonts/type1/public/cm-super/sftt0800.pfb>
+Output written on main.pdf (17 pages, 418203 bytes).
 PDF statistics:
- 321 PDF objects out of 1000 (max. 8388607)
- 258 compressed objects within 3 object streams
- 17 named destinations out of 1000 (max. 500000)
- 95 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 602 PDF objects out of 1000 (max. 8388607)
+ 503 compressed objects within 6 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 121 words of extra memory for PDF output out of 10000 (max. 10000000)
 

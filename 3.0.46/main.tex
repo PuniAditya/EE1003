@@ -161,4 +161,122 @@ plt.savefig('../figs/cdf_plot.jpg')
 \end{figure}
 \end{frame}
 
+\begin{frame}{Generating Laplace via Conditional Gaussian}
+To generate samples for our PDF, we use the property that a Laplace distribution can be expressed as a \textbf{Gaussian Scale Mixture} (a Conditional Gaussian). 
+
+If a random variable $X$ follows a Laplace distribution $f(x) = \frac{\lambda}{2} \exp\brak{-\lambda|x|}$, it can be generated in two steps:
+\begin{enumerate}
+    \item Draw a variance $V$ from an Exponential distribution with rate parameter $\theta = \frac{\lambda^2}{2}$.
+    \item Draw $X$ from a Normal (Gaussian) distribution conditioned on that variance $V$, so $X|V \sim \mathcal{N}(0, V)$.
+\end{enumerate}
+This powerful property allows us to use standard Gaussian generators to build sharp-peaked, heavy-tailed distributions.
+\end{frame}
+
+\begin{frame}{Decomposing the Target PDF}
+Our target PDF is $P_X(x) = M\exp\brak{-2\abs{x}} + N\exp\brak{-3\abs{x}}$. 
+We must rewrite this as a mixture of standard Laplace PDFs:
+\begin{align}
+    P_X(x) &= M \brak{\frac{2}{2}\exp\brak{-2\abs{x}}} + N \brak{\frac{2}{3} \cdot \frac{3}{2}\exp\brak{-3\abs{x}}} \\
+    P_X(x) &= \underbrace{M}_{\text{Weight } w_1} \underbrace{\brak{\frac{2}{2}\exp\brak{-2\abs{x}}}}_{\text{Laplace}(\lambda=2)} + \underbrace{\brak{\frac{2N}{3}}}_{\text{Weight } w_2} \underbrace{\brak{\frac{3}{2}\exp\brak{-3\abs{x}}}}_{\text{Laplace}(\lambda=3)}
+\end{align}
+
+Since $M + \frac{2N}{3} = 1$, this perfectly represents a weighted coin flip between two Laplace distributions.
+\end{frame}
+
+\begin{frame}{Algorithm for Sample Generation}
+Based on the decomposition, we generate samples $X$ as follows:
+\begin{itemize}
+    \item \textbf{Step 1 (Coin Flip):} Generate $U \sim \text{Uniform}(0, 1)$.
+    \item \textbf{Step 2 (Draw Variance $V$):} 
+    \begin{itemize}
+        \item If $U < M$: We select the $\lambda=2$ term. Draw $V \sim \text{Exp}\brak{\text{rate} = \frac{2^2}{2} = 2}$. 
+        \item If $U \ge M$: We select the $\lambda=3$ term. Draw $V \sim \text{Exp}\brak{\text{rate} = \frac{3^2}{2} = 4.5}$. 
+    \end{itemize}
+    \item \textbf{Step 3 (Conditional Gaussian):} Draw our final sample $X \sim \mathcal{N}(0, V)$.
+\end{itemize}
+\textit{Note: In Python's numpy, the exponential distribution takes the `scale` parameter, which is $\frac{1}{\text{rate}}$.}
+\end{frame}
+
+\begin{frame}[fragile]{Python Implementation: Sampling Logic}
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+
+N = 0.6
+M = 1 - (2/3) * N  # Equals 0.6
+num_samples = 10000
+
+u = np.random.rand(num_samples)
+is_term = u < M
+
+# For lambda = 2, rate = 2 -> scale = 1/2
+# For lambda = 3, rate = 4.5 -> scale = 1/4.5
+V = np.zeros(num_samples)
+V[is_term] = np.random.exponential(scale=1/2, size=np.sum(is_term))
+V[~is_term] = np.random.exponential(scale=1/4.5, size=np.sum(~is_term))
+
+samples = np.random.normal(loc=0, scale=np.sqrt(V))
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Python Implementation: Plotting}
+\begin{lstlisting}[language=Python]
+plt.figure(figsize=(8, 6))
+plt.hist(samples, bins=150, density=True, alpha=0.6, color='dodgerblue', 
+         edgecolor='black', label='Sampled PDF')
+
+x_vals = np.linspace(-4, 4, 1000)
+pdf_theoretical = M * np.exp(-2 * np.abs(x_vals)) + N * np.exp(-3 * np.abs(x_vals))
+plt.plot(x_vals, pdf_theoretical, color='red', linewidth=2, linestyle='--', 
+         label=r'Theoretical: $P_X(x)$')
+plt.title('PDF Generation using Conditional Gaussian')
+plt.axhline(0, color='black', linewidth=2)
+plt.axvline(0, color='black', linewidth=2)
+plt.xlabel('x')
+plt.ylabel('Probability Density')
+plt.grid(True, linestyle=':', alpha=0.7)
+plt.legend()
+plt.tight_layout()
+plt.savefig('../figs/conditional_gaussian.png')
+plt.show()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Simulation Results (n = 1000)}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\columnwidth]{figs/conditional_gaussian_1000.png}
+    \caption{Empirical PDF generated via Conditional Gaussians vs. Theoretical PDF}
+	\label{fig:f1}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Simulation Results (n = 5000)}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\columnwidth]{figs/conditional_gaussian_5000.png}
+    \caption{Empirical PDF generated via Conditional Gaussians vs. Theoretical PDF}
+	\label{fig:f2}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Simulation Results (n = 10000)}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\columnwidth]{figs/conditional_gaussian_10000.png}
+    \caption{Empirical PDF generated via Conditional Gaussians vs. Theoretical PDF}
+	\label{fig:f3}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Simulation Results (n = 20000)}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\columnwidth]{figs/conditional_gaussian_20000.png}
+    \caption{Empirical PDF generated via Conditional Gaussians vs. Theoretical PDF}
+	\label{fig:f4}
+\end{figure}
+The histogram perfectly follows the theoretical curve, verifying our mathematical decomposition and sampling logic.
+\end{frame}
+
 \end{document}

@@ -1,26 +1,21 @@
 \frametitle{Python Implementation: Plotting}
 \begin{lstlisting}[language=Python]
-plt.figure(1, figsize=(8, 6))
-plt.plot(x_vals, pdf_vals, label=rf'PDF $P_X(x)$', color='blue')
+plt.figure(figsize=(8, 6))
+plt.hist(samples, bins=150, density=True, alpha=0.6, color='dodgerblue',
+         edgecolor='black', label='Sampled PDF')
+
+x_vals = np.linspace(-4, 4, 1000)
+pdf_theoretical = M * np.exp(-2 * np.abs(x_vals)) + N * np.exp(-3 * np.abs(x_vals))
+plt.plot(x_vals, pdf_theoretical, color='red', linewidth=2, linestyle='--',
+         label=r'Theoretical: $P_X(x)$')
+plt.title('PDF Generation using Conditional Gaussian')
 plt.axhline(0, color='black', linewidth=2)
 plt.axvline(0, color='black', linewidth=2)
-plt.fill_between(x_vals, pdf_vals, color='blue', alpha=0.2)
-plt.title('Probability Density Function')
-plt.xlabel(r'$x$')
+plt.xlabel('x')
 plt.ylabel('Probability Density')
 plt.grid(True, linestyle=':', alpha=0.7)
 plt.legend()
-plt.savefig('../figs/pdf_plot.jpg')
-
-plt.figure(2, figsize=(8, 6))
-plt.plot(x_vals, cdf_vals, label=r'CDF $F_X(x)$', color='red')
-plt.axhline(0, color='black', linewidth=2)
-plt.axhline(1, color='black', linewidth=2)
-plt.axvline(0, color='black', linewidth=2)
-plt.title('Cumulative Distribution Function')
-plt.xlabel(r'$x$')
-plt.ylabel('Cumulative Probability')
-plt.grid(True, linestyle=':', alpha=0.7)
-plt.legend()
-plt.savefig('../figs/cdf_plot.jpg')
+plt.tight_layout()
+plt.savefig('../figs/conditional_gaussian.png')
+plt.show()
 \end{lstlisting}
