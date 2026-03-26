@@ -98,7 +98,7 @@ Since $\omega, L, C > 0$, the product $\omega^2LC$ is always positive.
 \textbf{(4)} No real frequency $\omega$ can satisfy $\omega^2LC = -1$. Therefore, $V_0$ cannot be zero.
 \end{frame}
 
-\begin{frame}[fragile]{Python Implementation}
+\begin{frame}[fragile]{Python Implementation: Computation}
 \begin{lstlisting}[language=Python]
 import numpy as np
 from scipy import signal
@@ -117,7 +117,14 @@ t = np.linspace(0, 0.2, 200)
 vin = A * np.sin(w * t)
 
 tout, v0, _ = signal.lsim(sys, vin, t)
+w_vals = np.logspace(1, 4, 500) 
+w_out, H_complex = signal.freqresp(sys, w=w_vals)
+magnitude = np.abs(H_complex)
+\end{lstlisting}
+\end{frame}
 
+\begin{frame}[fragile]{Python Implementation: Plotting}
+\begin{lstlisting}[language=Python]
 plt.plot(t, vin, label='Vin(t)', alpha=0.5, linestyle='--')
 plt.plot(t, v0, label='V0(t)', linewidth=2)
 plt.axhline(0, color='black', linewidth=2)
@@ -127,7 +134,16 @@ plt.xlabel('Time (s)')
 plt.ylabel('Voltage (V)')
 plt.legend()
 plt.grid(True)
-plt.savefig('plot.jpg')
+plt.savefig('../figs/time_resp.jpg')
+plt.show()
+
+plt.figure()
+plt.semilogx(w_out, magnitude, color='purple', linewidth=2)
+plt.title('Magnitude Response of the AC Bridge')
+plt.xlabel(r'Angular Frequency $\omega$ (rad/s)')
+plt.ylabel(r'Magnitude $|H(j\omega)|$')
+plt.grid(True, which="both", linestyle='--', alpha=0.7)
+plt.savefig('../figs/freq_response.jpg')
 plt.show()
 \end{lstlisting}
 \end{frame}
@@ -135,11 +151,21 @@ plt.show()
 \begin{frame}{Simulation Results}
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\columnwidth]{figs/plot.jpg}
+    \includegraphics[width=0.5\columnwidth]{figs/time_resp.jpg}
     \caption{Time-Domain Response of $V_{in}$ and $V_0$}
 	\label{fig:sim}
 \end{figure}
 The simulation confirms that $V_0(t)$ is a persistent sinusoid, meaning it never reaches a zero-amplitude steady state.
+\end{frame}
+
+\begin{frame}{Frequency Response}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\columnwidth]{figs/freq_response.jpg}
+    \caption{Magnitude of Transfer Function vs. Angular Frequency $\omega$}
+	\label{fig:freq}
+\end{figure}
+The frequency response further confirms our theoretical steady-state analysis. The magnitude $|H(j\omega)|$ never drops to zero at any real frequency, proving that the bridge cannot be balanced.
 \end{frame}
 
 \end{document}
